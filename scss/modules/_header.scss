@@ -1,0 +1,82 @@
+$header-h: 7rem;
+$m-header-h: 5rem;
+
+.global-header {
+  width: 100%;
+  background-color: $primary-color;
+
+  .layout {
+    width: calc(100% - 3rem);
+    height: $m-header-h;
+    margin: 0 auto;
+
+    @include media($medium) {
+      height: $header-h;
+      width: calc(100% - 5rem);
+    }
+
+    .logo {
+      width: 10rem;
+      @include media($medium) {
+        width: 16rem;
+      }
+    }
+
+    .main-menu {
+      @import "burger-menu-icon";
+      ul {
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        width: 60%;
+        top: $m-header-h;
+        right: 0;
+        background: $primary-color;
+        z-index: 9;
+        flex-flow: column;
+        display: none;
+
+        @include media($medium) {
+          flex-flow: row;
+          position: static;
+          width: initial;
+          background: transparent;
+          display: flex;
+        }
+
+        li {
+          margin: 0;
+          list-style-type: none;
+
+          @include media($medium) {
+            margin: 0 1rem;
+          }
+
+          a {
+            color: white;
+            text-decoration: none;
+            @include nav-font-style;
+
+            padding: 1rem 1rem;
+            display: flex;
+            border-bottom: 0.1rem solid white;
+
+            @include media($medium) {
+              padding: 0;
+              display: block;
+              border-bottom: 0;
+            }
+          }
+
+          &:last-child {
+            margin-right: 0;
+
+            a {
+              border-bottom: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

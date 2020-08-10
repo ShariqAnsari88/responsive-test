@@ -1,0 +1,56 @@
+$xxl-grid-item-w-h: 32.5rem;
+$xl-grid-item-w-h: 25rem;
+$m-grid-item-w-h: 30rem;
+
+@mixin img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.grid-layout {
+  margin: 4rem 0;
+  flex-flow: row wrap;
+
+  .grid-item {
+    width: $m-grid-item-w-h;
+    height: $m-grid-item-w-h;
+    margin: 1rem;
+    border-radius: 2rem;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+
+    @include media($medium) {
+      width: $xl-grid-item-w-h;
+      height: $xl-grid-item-w-h;
+    }
+
+    @include media($xxlarge) {
+      width: $xxl-grid-item-w-h;
+      height: $xxl-grid-item-w-h;
+    }
+
+    img {
+      @include img-cover;
+      transition: all ease 0.2s;
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.2);
+      }
+    }
+
+    .caption {
+      color: white;
+      width: 100%;
+      padding: 0.5rem 2rem;
+      background-color: rgba(0, 0, 0, 0.35);
+      position: absolute;
+      left: 0;
+      bottom: 2rem;
+    }
+  }
+}

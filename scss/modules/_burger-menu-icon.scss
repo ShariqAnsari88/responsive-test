@@ -1,0 +1,115 @@
+$dark: #212121;
+$light: #efefef;
+$color: #b3e5fc;
+
+@mixin btn($left, $top) {
+  position: absolute;
+  width: 3rem;
+  height: 3rem;
+  z-index: 9;
+  top: $top;
+  right: $left;
+  transition-duration: 0.5s;
+}
+
+@mixin icon($height, $width) {
+  transition-duration: 0.5s;
+  position: absolute;
+  height: $height;
+  width: $width;
+  top: 1.5rem;
+  background-color: white;
+}
+
+@mixin icon-before($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: white;
+  content: "";
+  top: $top;
+}
+
+@mixin icon-after($height, $width, $top) {
+  transition-duration: 0.5s;
+  position: absolute;
+  width: $width;
+  height: $height;
+  background-color: white;
+  content: "";
+  top: $top;
+}
+
+.nav-icon {
+  @include btn(1.5rem, 0.8rem);
+  @include media($medium) {
+    display: none;
+  }
+
+  .icon-left {
+    @include icon(0.4rem, 1.5rem);
+    border-radius: 0.2rem 0 0 0.2rem;
+
+    &:before {
+      @include icon-before(0.4rem, 1.5rem, -1rem);
+      border-radius: 0.2rem 0 0 0.2rem;
+    }
+
+    &:after {
+      @include icon-after(0.4rem, 1.5rem, 1rem);
+      border-radius: 0.2rem 0 0 0.2rem;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .icon-right {
+    @include icon(0.4rem, 1.5rem);
+    border-radius: 0 0.2rem 0.2rem 0;
+    left: 1.5rem;
+
+    &:before {
+      @include icon-before(0.4rem, 1.5rem, -1rem);
+      border-radius: 0 0.2rem 0.2rem 0;
+    }
+
+    &:after {
+      @include icon-after(0.4rem, 1.5rem, 1rem);
+      border-radius: 0 0.2rem 0.2rem 0;
+    }
+  }
+
+  &.open {
+    .icon-left {
+      transition-duration: 0.5s;
+      background: transparent;
+
+      &:before {
+        transform: rotateZ(45deg) scaleX(1.4) translate(0.2rem, 0.2rem);
+      }
+
+      &:after {
+        transform: rotateZ(-45deg) scaleX(1.4) translate(0.2rem, -0.2rem);
+      }
+    }
+
+    .icon-right {
+      transition-duration: 0.5s;
+      background: transparent;
+
+      &:before {
+        transform: rotateZ(-45deg) scaleX(1.4) translate(-0.2rem, 0.2rem);
+      }
+
+      &:after {
+        transform: rotateZ(45deg) scaleX(1.4) translate(-0.2rem, -0.2rem);
+      }
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+}

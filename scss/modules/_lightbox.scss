@@ -1,0 +1,111 @@
+$modal-img-h-w: 60rem;
+$modal-img-radius: 2rem;
+$close-btn-h-w: 3rem;
+
+.lightbox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  display: none;
+
+  .opac-layer {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+    @include media($medium) {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+  }
+
+  .content {
+    width: $m-grid-item-w-h;
+    height: $m-grid-item-w-h;
+    border-radius: $modal-img-radius;
+    overflow: hidden;
+    position: relative;
+
+    @include media($medium) {
+      width: $modal-img-h-w/1.5;
+      height: $modal-img-h-w/1.75;
+    }
+
+    @include media($xxlarge) {
+      width: $modal-img-h-w;
+      height: $modal-img-h-w/1.25;
+    }
+
+    .close-btn {
+      width: $close-btn-h-w;
+      height: $close-btn-h-w;
+      background: url(../images/cross.png) no-repeat center;
+      background-size: contain;
+      cursor: pointer;
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+    }
+
+    img {
+      @include img-cover;
+    }
+  }
+
+  &.show {
+    display: flex;
+    animation: fadeIn 0.5s forwards;
+
+    .content {
+      animation: scaleUp 0.5s forwards;
+    }
+  }
+
+  &.hide {
+    display: flex;
+    animation: fadeOut 0.5s forwards;
+
+    .content {
+      animation: scaleDown 0.5s forwards;
+    }
+  }
+}
+
+@keyframes scaleDown {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}
+@keyframes scaleUp {
+  0% {
+    transform: scale(0.5);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

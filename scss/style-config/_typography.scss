@@ -1,0 +1,27 @@
+// Typography
+// =============================================================================
+//	MIXINS
+// =============================================================================
+
+@mixin base-font {
+  margin: 0;
+  font-family: $regular;
+  font-size: 1.3rem;
+  line-height: 1.5;
+  @include media($medium) {
+    font-size: 1.5rem;
+  }
+}
+
+@mixin base-font-style {
+  @include base-font;
+}
+
+@mixin nav-font-style {
+  @include base-font;
+  line-height: 1;
+}
+
+p {
+  @include base-font-style;
+}

@@ -1,0 +1,11 @@
+.main-footer {
+  background-color: $primary-color;
+  padding: 1.5rem 0;
+  margin-top: auto;
+  .logo {
+    width: 10rem;
+    @include media($medium) {
+      width: 14rem;
+    }
+  }
+}
